@@ -1,5 +1,5 @@
-use merkletree_rust::Prover;
-use merkletree_rust::Verifier;
+use merkletree::Prover;
+use merkletree::Verifier;
 use std::fs;
 
 #[test]

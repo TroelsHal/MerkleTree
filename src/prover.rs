@@ -378,7 +378,7 @@ mod tests {
 
     #[test]
     fn test_larger_than_max_data_size() {
-        let large_data: Vec<String> = (0..MAX_DATA_SIZE).map(|i| i.to_string()).collect();
+        let large_data: Vec<String> = (0..MAX_DATA_SIZE + 1).map(|i| i.to_string()).collect();
         let data_refs: Vec<&str> = large_data.iter().map(AsRef::as_ref).collect();
 
         let result = Prover::new(&data_refs, 1);
@@ -390,7 +390,7 @@ mod tests {
 
     #[test]
     fn test_max_data_size() {
-        let large_data: Vec<String> = (0..MAX_DATA_SIZE - 1).map(|i| i.to_string()).collect();
+        let large_data: Vec<String> = (0..MAX_DATA_SIZE).map(|i| i.to_string()).collect();
         let data_refs: Vec<&str> = large_data.iter().map(AsRef::as_ref).collect();
 
         let result = Prover::new(&data_refs, 1);

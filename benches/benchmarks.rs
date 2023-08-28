@@ -1,5 +1,5 @@
 use criterion::{criterion_group, criterion_main, Criterion};
-use merkletree_rust::Prover;
+use merkletree::Prover;
 use std::fs;
 
 fn bench_prover_new(c: &mut Criterion) {

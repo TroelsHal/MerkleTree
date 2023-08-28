@@ -355,7 +355,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "merkletree_rust"
+name = "merkletree"
 version = "0.1.0"
 dependencies = [
  "anyhow",
