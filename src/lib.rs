@@ -5,10 +5,10 @@
 //!
 //! ## Primary Components:
 //!
-//! - `hasher`: Utility functions for hashing data.
-//! - `merkle_proof`: Data structure for representing Merkle proofs.
 //! - `prover`: Functionality for bulding Merkle tree and generating Merkle proofs from a given tree.
 //! - `verifier`: Functionality for verification of Merkle proofs.
+//! - `hasher`: Utility functions for hashing data.
+//! - `merkle_proof`: Data structure for representing Merkle proofs.
 //!
 //! ## Features:
 //!
@@ -23,12 +23,7 @@
 //!
 //! ```
 //! # use merkletree::{Prover, Verifier};
-//! let data = vec![
-//!     "integration00",
-//!     "integration01",
-//!     "integration02",
-//!     "integration03",
-//! ];
+//! let data = vec!["data00", "data01", "data02", "data03",];
 //!
 //! // Chose a number of threads for parallelization
 //! let num_threads = 4;
@@ -48,7 +43,7 @@
 //! // Create a Verifier instance with the root hash
 //! let verifier = Verifier::new(root_hash);
 //!
-//! // Check the proof using the Verifier
+//! // Check the validity of the proof using the Verifier
 //! assert!(verifier.verify_proof(&proof));
 //! ```
 //!

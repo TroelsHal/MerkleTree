@@ -1,7 +1,7 @@
 //! Provides functionality for generating Merkle proofs.
 //!
-//! The `Prover` is a core component of the library, responsible for constructing the Merkle tree and
-//! generating proofs for given leaf indices. This implementation supports multithreading for efficient tree
+//! The `Prover` is responsible for constructing the Merkle tree and generating proofs
+//! for given leaf indices. This implementation supports multithreading for efficient tree
 //! construction.
 
 use crate::hash_data_sequences;
@@ -14,9 +14,8 @@ const MAX_DATA_SIZE: usize = 1 << 20;
 
 /// Represents a node in the Merkle tree.
 ///
-/// Each node contains a hash representing either a data point (in the case of leaves) or
-/// a combination of child hashes (for internal nodes). Non-leaf nodes have references
-/// to their left and right children.
+/// Each node contains a hash value. Non-leaf nodes have references to their left
+/// and right children.
 struct Node {
     hash: [u8; 32],
     left: Option<Box<Node>>,
@@ -25,10 +24,6 @@ struct Node {
 
 /// `Prover` is responsible for constructing a Merkle tree from provided data
 /// and generating proofs for specified leaf indices.
-///
-/// It leverages multithreading capabilities for efficient tree construction and
-/// contains the root node of the tree once it's built. Additionally, it keeps track
-/// of the number of data points it was built from.
 pub struct Prover {
     root: Option<Box<Node>>,
     data_length: usize,
@@ -116,7 +111,7 @@ impl Prover {
 
     /// Constructs the Merkle tree from the provided data.
     ///
-    /// This internal method is used during the creation of the Prover instance.
+    /// Internal method used during the creation of the Prover instance.
     ///
     /// # Arguments
     ///
@@ -156,7 +151,7 @@ impl Prover {
             // The size of the next (upper) level will be half the size
             let next_size = current_level.len() / 2;
 
-            // Fill the vector with 'None' so we can index into it.
+            // Fill the vector with 'None' so it can index into.
             // All None values will be overwritten.
             let mut next_level: Vec<Option<Box<Node>>> = (0..next_size).map(|_| None).collect();
 
